@@ -28,8 +28,7 @@ add_theme_support( 'post-thumbnails' );
 register_nav_menus( 
 	array(
 		'primary'	=>	__( 'Primary Menu', 'naked' ), // Register the Primary menu
-		// Copy and paste the line above right here if you want to make another menu, 
-		// just change the 'primary' to another name
+        'undertitle'	=>	__( 'Under Title Menu', 'naked' ),
 	)
 );
 
@@ -61,7 +60,7 @@ function naked_scripts()  {
 
 	// get the theme directory style.css and link to it in the header
 	wp_enqueue_style('style.css', get_stylesheet_directory_uri() . '/style.css');
-	
+
 	// add fitvid
 	wp_enqueue_script( 'naked-fitvid', get_template_directory_uri() . '/js/jquery.fitvids.js', array( 'jquery' ), NAKED_VERSION, true );
 	

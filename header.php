@@ -60,6 +60,18 @@
 			<h4 class="site-description">
 				<?php bloginfo( 'description' ); // Display the blog description, found in General Settings ?>
 			</h4>
+
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/danielerapisarda/" rel="nofollow" class="icon-linkedin"></a>
+                <a href="https://github.com/drapisarda" rel="nofollow" class="icon-github"></a>
+            </div>
+
+            <div class="container center">
+                <nav class="site-navigation undertitle-navigation">
+                    <?php wp_nav_menu( array( 'theme_location' => 'undertitle' ) ); // Display the user-defined menu in Appearance > Menus ?>
+                </nav>
+            </div>
+
 		</div><!-- /brand -->
 		
 		<div class="clear"></div>

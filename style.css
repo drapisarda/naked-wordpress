@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Karla|Quicksand);
 @import url('styles/boots-bones.css');
+@import url("styles/socials.css");
 /*
 Theme Name: Naked Wordpress
 Theme URI: http://bckmn.com/naked-wordpress
@@ -502,6 +503,24 @@ header #brand h1 span {
   color: #888888;
   text-transform: lowercase;
 }
+
+.socials{
+  font-size: 0.8em;
+}
+
+.undertitle-navigation a{
+  padding: 0.5em 1em;
+  margin: 0 1em;
+  background: #007998;
+  color: #FFFFFF;
+  border-radius: 3px;
+}
+
+#menu-under-title-menu{
+  display: flex;
+  justify-content: center;
+}
+
 header nav {
   font-family: "Quicksand", Helvetica, sans-serif;
 }
@@ -709,6 +728,8 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
+
+
 
 /* #Media Queries
 ================================================== */

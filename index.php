@@ -7,7 +7,15 @@
 
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<div id="primary" class="row-fluid">
+
 		<div id="content" role="main" class="span8 offset2">
+            <?php if (is_category()) {
+                ?>
+                <div class="category-desc">
+                    <?php echo category_description( $category_id ); ?>
+                </div>
+                <?
+            } ?>
 
 			<?php if ( have_posts() ) : 
 			// Do we have any posts in the databse that match our query?
@@ -28,7 +36,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							</a>
 						</h1>
 						<div class="post-meta">
-							<?php the_time('m/d/Y'); // Display the time published ?> | 
+							<?php the_time('F j, Y'); // Display the time published ?> |
 							<?php if( comments_open() ) : // If we have comments open on this post, display a link and count of them ?>
 								<span class="comments-link">
 									<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); 
