@@ -12,7 +12,7 @@ get_header(); // This fxn gets the header.php file and renders it ?>
             <?php if (is_category()) {
                 ?>
                 <div class="category-desc">
-                    <?php echo category_description( $category_id ); ?>
+                    <?php echo category_description( $wp_query->get_queried_object_id() ); ?>
                 </div>
                 <?
             } ?>
@@ -27,8 +27,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				?>
 
 					<article class="post">
-					
-						<?php the_post_thumbnail('large'); //Get the thumbnail to this post. ?>
 
 						<h1 class="title">
 							<a href="<?php the_permalink(); // Get the link to this post ?>" title="<?php the_title(); ?>">
@@ -36,27 +34,26 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 							</a>
 						</h1>
 						<div class="post-meta">
-							<?php the_time('F j, Y'); // Display the time published ?> |
-							<?php if( comments_open() ) : // If we have comments open on this post, display a link and count of them ?>
-								<span class="comments-link">
-									<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); 
-									// Display the comment count with the applicable pluralization
-									?>
-								</span>
-							<?php endif; ?>
-						
+							<?php the_time('F j, Y'); // Display the time published ?>
 						</div><!--/post-meta -->
-						
-						<div class="the-content">
-							<?php the_content( 'Continue...' ); 
-							// This call the main content of the post, the stuff in the main text box while composing.
-							// This will wrap everything in p tags and show a link as 'Continue...' where/if the
-							// author inserted a <!-- more --> link in the post body
-							?>
-							
-							<?php wp_link_pages(); // This will display pagination links, if applicable to the post ?>
-						</div><!-- the-content -->
-		
+
+                        <?php if (has_post_thumbnail()) { ?>
+                            <div class="post-thumbnail">
+                                <a href="<?php the_permalink(); // Get the link to this post ?>" title="<?php the_title(); ?>">
+                                    <?php the_post_thumbnail('large'); //Get the thumbnail to this post. ?>
+                                </a>
+                            </div>
+                        <?php } ?>
+
+                        <div class="the-excerpt">
+                            <?php the_excerpt()?>
+                            <p class="the-excerpt__more">
+                                <a href="<?php the_permalink(); // Get the link to this post ?>" title="<?php the_title(); ?>">
+                                    Learn more »
+                                </a>
+                            </p>
+                        </div>
+
 						<div class="meta clearfix">
 							<div class="category"><?php echo get_the_category_list(); // Display the categories this post belongs to, as links ?></div>
 							<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); // Display the tags this post has, as links separated by spaces and pipes ?></div>
